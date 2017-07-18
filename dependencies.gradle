@@ -1,8 +1,0 @@
-project.ext.set("libraries", "")
-
-project.ext.set('springVersion', '4.1.9.RELEASE')
-
-project.libraries = [
-        mockito: 'org.mockito:mockito-core:1.9.5',
-        springcontext: "org.springframework:spring-context:$springVersion"
-        ]

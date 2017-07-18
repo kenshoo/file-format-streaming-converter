@@ -1,21 +1,24 @@
+package com.kenshoo.xlsx2csv;
+
+import com.google.common.collect.Lists;
 import com.monitorjbl.xlsx.impl.StreamingCell;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: royh
- * Date: 06/04/2017
- * Time: 17:45
+ * User: Shachaf ashkenazi
+ * Date: 18/07/2017
  */
-@Service
 public class CellHandler {
 
-    @Autowired
-    private List<CellDataHandler> cellDataHandlers;
+    private List<CellDataHandler> cellDataHandlers = Lists.newArrayList();
 
+    public CellHandler() {
+        cellDataHandlers.add(new BooleanCellDataHandler());
+        cellDataHandlers.add(new DateCellDataHandler());
+        cellDataHandlers.add(new NumberCellDataHandler());
+    }
 
     public String getDataFromCell(StreamingCell cell){
         return cell == null ? "" :

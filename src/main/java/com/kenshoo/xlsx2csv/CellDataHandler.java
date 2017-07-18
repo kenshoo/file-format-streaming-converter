@@ -1,10 +1,11 @@
+package com.kenshoo.xlsx2csv;
+
 import com.monitorjbl.xlsx.impl.StreamingCell;
 
 /**
  * Created with IntelliJ IDEA.
- * User: royh
- * Date: 06/04/2017
- * Time: 17:58
+ * User: Shachaf ashkenazi
+ * Date: 18/07/2017
  */
 public interface CellDataHandler {
 

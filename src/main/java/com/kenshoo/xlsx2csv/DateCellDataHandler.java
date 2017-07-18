@@ -1,20 +1,19 @@
+package com.kenshoo.xlsx2csv;
+
 import com.monitorjbl.xlsx.impl.StreamingCell;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
- * User: royh
- * Date: 06/04/2017
- * Time: 18:13
+ * User: Shachaf ashkenazi
+ * Date: 18/07/2017
  */
-@Component
 public class DateCellDataHandler implements CellDataHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(DateCellDataHandler.class);

@@ -1,14 +1,13 @@
+package com.kenshoo.xlsx2csv;
+
 import com.monitorjbl.xlsx.impl.StreamingCell;
 import org.apache.poi.ss.usermodel.Cell;
-import org.springframework.stereotype.Component;
 
 /**
  * Created with IntelliJ IDEA.
- * User: royh
- * Date: 06/04/2017
- * Time: 18:13
+ * User: Shachaf ashkenazi
+ * Date: 18/07/2017
  */
-@Component
 public class BooleanCellDataHandler implements CellDataHandler {
 
     @Override
