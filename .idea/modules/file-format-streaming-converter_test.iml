@@ -23,14 +23,14 @@
     <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy-agent:1.6.9" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.5" level="project" />
     <orderEntry type="library" name="Gradle: xml-apis:xml-apis:1.4.01" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.poi:poi-ooxml:3.13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.xmlbeans:xmlbeans:2.6.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.poi:poi-ooxml-schemas:3.13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.mockito:mockito-core:2.7.12" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.poi:poi:3.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: xerces:xercesImpl:2.11.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: com.monitorjbl:xlsx-streamer:1.0.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.mockito:mockito-core:2.7.12" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.poi:poi-ooxml-schemas:3.13" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.xmlbeans:xmlbeans:2.6.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.poi:poi-ooxml:3.13" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: junit:junit:4.12" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="file-format-streaming-converter_main" />
 </module>
