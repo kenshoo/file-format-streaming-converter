@@ -10,11 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Shachaf ashkenazi
  * Date: 18/07/2017
  */
-public class DateCellDataHandler implements CellDataHandler {
+class DateCellDataHandler implements CellDataHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(DateCellDataHandler.class);
 

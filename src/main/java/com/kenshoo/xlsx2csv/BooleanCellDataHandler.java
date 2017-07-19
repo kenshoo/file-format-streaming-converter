@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.Cell;
  * User: Shachaf ashkenazi
  * Date: 18/07/2017
  */
-public class BooleanCellDataHandler implements CellDataHandler {
+class BooleanCellDataHandler implements CellDataHandler {
 
     @Override
     public boolean isMatchingCellType(StreamingCell cell) {
@@ -18,7 +18,7 @@ public class BooleanCellDataHandler implements CellDataHandler {
     @Override
     public String handleCell(StreamingCell cell) {
         String rawValue = (String) cell.getRawContents();
-       return rawValue.equals("1") ? "true" : "false";
+        return rawValue.equals("1") ? "true" : "false";
     }
 
 

@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * User: Shachaf ashkenazi
  * Date: 18/07/2017
  */
-public class NumberCellDataHandler implements CellDataHandler {
+class NumberCellDataHandler implements CellDataHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(NumberCellDataHandler.class);
     private static final String DOT = ".";

@@ -24,7 +24,8 @@ public class CellHandler {
         return cell == null ? "" :
                 cellDataHandlers.stream().filter(cellDataHandler -> cellDataHandler.isMatchingCellType(cell))
                         .findFirst()
-                        .map(cellDataHandler -> cellDataHandler.handleCell(cell)).orElse(getDefaultData(cell));
+                        .map(cellDataHandler -> cellDataHandler.handleCell(cell))
+                        .orElse(getDefaultData(cell));
     }
 
     private String getDefaultData(StreamingCell cell) {
