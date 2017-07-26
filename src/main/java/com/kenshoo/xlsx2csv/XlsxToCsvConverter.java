@@ -29,11 +29,20 @@ public class XlsxToCsvConverter {
 
     private static final Logger logger = LoggerFactory.getLogger(XlsxToCsvConverter.class);
     private final static char QUOTE = '"';
+    private static final String COMMA = ",";
 
-    private String delimiter = ",";
+    private String delimiter = COMMA;
     private CellHandler cellHandler = new CellHandler();
 
     /**
+     * A default constructor with a comma as delimiter.
+     */
+    public XlsxToCsvConverter() {
+        this(COMMA);
+    }
+
+    /**
+     * A constructor that receives a custom delimiter to use in translation.
      * @param delimiter - a delimiter used to differentiate values in the translated file.
      */
     public XlsxToCsvConverter(String delimiter) {
