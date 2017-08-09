@@ -2,15 +2,3 @@ language: java
 jdk:
   - openjdk8
 script: "./gradlew clean build"
-
-deploy:
-  provider: releases
-  api_key:
-    secure: qFmW0HuYcGKUU3Tz3oHPbtF6GOwJzB/MihoNf0RGR8/fkW3dEYry3KN+bglyAicVbLWxkbFPbu1vf8UsNlT41hvBcD2rl78wK+GgW+NpMUzLQs0hZMUmIM+3nblONHPYEprCdZh43WN3YFXUPInkkJw43J7vuW1+tkNGqcWfg1V8COYainhk94croJ0CtFvVahcxShiiTLo7ysikg6b1DICQ10kAJBxAGqEKK5zwFBxHwLFR8ez82vqX4bhGt9lx9AfZtcy6ugQUq1rcl4n6HI3SIQIF2nY1jYs6T476FLLJW69kUSLpgUG6FPvNR2f/8xVGgB8W49hKPnBWhonROUG776qY7e0/hnK09XfHF/INXgDYgNyLpf7vh6JDUrG+DKz8y2HuNfu2BQhtP0Q1Tl5skWF15KQUj+OnnnCxlOK7eTlBM3QazN4x7zRSvnSjOgSI8bf6NfO4Y6YMXTpDjxOhhRvrooW4ewDnk1bH0TTXEETYjjwc1q/fmqOng0mj5Xs/wOT2rLmZKrdNrK9Z9/0I8UnHyyniOL7yE1zEZEiKpIiJfz4GtTyMt6L8ylKd4McwBUuRYVILCROG99oLiDuxXI9NeblAX82QXtrJLUPbnRA7lspXzfsQqzm6Tu+29lp/S3LWerzwSXIox0BaSwyZvsDcggS76b26i6UK+co=
-  file_glob: true
-  file: ./build/libs/file-format-streaming-converter-*.jar
-  on:
-    repo: kenshoo/file-format-streaming-converter
-  skip_cleanup: true
-  on:
-    tags: true
