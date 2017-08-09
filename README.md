@@ -1,4 +1,4 @@
-﻿# file-format-streaming-converter
+﻿# file-format-streaming-converter [![Build Status](https://travis-ci.org/kenshoo/file-format-streaming-converter.svg?branch=master)](https://travis-ci.org/kenshoo/file-format-streaming-converter)
 
 This is a file format converter from xlsx to csv. The main use of this repository is to convert 
 large xlsx files to csv files using streams instead of reading the entire contents of a file.
