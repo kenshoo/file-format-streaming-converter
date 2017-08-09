@@ -55,12 +55,12 @@ public class XlsxToCsvConverter {
      * @throws IOException if an I/O error occurs.
      */
     public void convert(InputStream inputStream, FileOutputStream fileOutputStream) throws IOException {
-        Iterator<Row> rowIterator = getRowIterator(inputStream);
+        final Iterator<Row> rowIterator = getRowIterator(inputStream);
         if (!rowIterator.hasNext()) {
             logger.error("File is empty, exiting converter");
         } else {
             List<String> headers = getRowAsList(rowIterator.next());
-            int rowSize = headers.size();
+            final int rowSize = headers.size();
             try (CSVPrinter csvPrinter = createCSVPrinter(headers.toArray(new String[headers.size()]), delimiter, fileOutputStream)) {
                 writeRowsToFile(rowIterator, rowSize, csvPrinter);
             }
@@ -69,7 +69,7 @@ public class XlsxToCsvConverter {
 
     private void writeRowsToFile(Iterator<Row> rowIterator, int rowSize, CSVPrinter csvPrinter) throws IOException {
         while (rowIterator.hasNext()) {
-            Row next = rowIterator.next();
+            final Row next = rowIterator.next();
             List<String> rowAsList = getRowAsList(next, rowSize);
             if (isLastLine(rowIterator.hasNext()) && !hasDataInLine(rowAsList)) {
                 continue;
@@ -87,15 +87,13 @@ public class XlsxToCsvConverter {
     }
 
     private Iterator<Row> getRowIterator(InputStream inputStream) {
-        Workbook workbook;
-        Sheet sheet;
-        Iterator<Row> rowIterator;
-        workbook = StreamingReader.builder()
+        final Workbook workbook = StreamingReader.builder()
                 .rowCacheSize(10)
                 .bufferSize(1024)
                 .open(inputStream);
-        sheet = workbook.getSheetAt(0);
-        rowIterator = sheet.rowIterator();
+        final Sheet sheet = workbook.getSheetAt(0);
+        final Iterator<Row> rowIterator = sheet.rowIterator();
+        
         return rowIterator;
     }
 
@@ -110,13 +108,13 @@ public class XlsxToCsvConverter {
     }
 
     private String getCellValue(Row row, int index) {
-        Cell cell = row.getCell(index);
+        final Cell cell = row.getCell(index);
         return cellHandler.getDataFromCell((StreamingCell) cell);
     }
 
     private CSVPrinter createCSVPrinter(String[] headers, String delimiter, FileOutputStream outputStream) throws IOException {
-        Writer writer = new BufferedWriter(new OutputStreamWriter(outputStream, Charsets.UTF_8));
-        CSVFormat format = CSVFormat.newFormat(delimiter.charAt(0))
+        final Writer writer = new BufferedWriter(new OutputStreamWriter(outputStream, Charsets.UTF_8));
+        final CSVFormat format = CSVFormat.newFormat(delimiter.charAt(0))
                 .withHeader((String[]) headers)
                 .withQuote(QUOTE)
                 .withRecordSeparator(System.lineSeparator());
