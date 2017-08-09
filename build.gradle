@@ -10,10 +10,35 @@
 apply plugin: 'java-library'
 
 // In this section you declare where to find the dependencies of your project
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
 buildscript {
-    repositories {
-        mavenCentral()
-    }
+   repositories {
+       mavenLocal()
+       mavenCentral()
+   }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'com.kenshoo'
+
+compileJava {
+   options.compilerArgs << '-Werror'
+}
+
+compileTestJava {
+   options.compilerArgs << '-Werror'
+}
+
+project.test {
+   beforeTest { descriptor ->
+      logger.lifecycle('running ' + descriptor)
+   }
 }
 
 task wrapper(type: Wrapper) {
