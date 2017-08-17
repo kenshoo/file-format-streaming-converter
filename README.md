@@ -22,6 +22,11 @@ An xlsx file that looks like this:
 
 Would translate to a same looking csv file, including the special characters and the dates.
 
+Dependencies
+===
+This project depends on [excel-streaming-reader](https://github.com/monitorjbl/excel-streaming-reader) which is a library
+that provides xlsx file type parsing using streams (for big files). 
+
 Code usage example
 =========
 First you should create an output stream (here I first created a file and an output stream on top).
@@ -39,6 +44,9 @@ input stream and the dest output stream to convert:
     
 After convert(), the translated file should be inside the outputStream (or inside the file).
 
+Acknowledgements
+====
+[@monitorjbl](https://github.com/monitorjbl) for providing the excel-streaming-reader api.
 
 Licensing
 =========
