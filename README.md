@@ -32,6 +32,7 @@ getSystemResourceAsStream() with the file name a sa parameter.
 Afterwards, you send both the source
 input stream and the dest output stream to convert:
 
+    XlsxToCsvConverter xlsxToCsvConverter = new XlsxToCsvConverter.Builder().build(); //building a new converter with default parameters
     File destinationFile = new File(DEST_FILE_NAME); //destination file
     FileOutputStream outputStream = new FileOutputStream(actualTranslatedFile);
     InputStream inputStream = ClassLoader.getSystemResourceAsStream(fileNameToTranslate);

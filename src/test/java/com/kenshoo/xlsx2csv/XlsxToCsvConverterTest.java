@@ -6,7 +6,9 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.BOMInputStream;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -25,19 +27,28 @@ public class XlsxToCsvConverterTest {
 
     private static final String ACTUAL_TRANSLATED_FILE = "actual_file_after_translation.csv";
     private static final String EXPECTED_CSV_FILE = "expected_csv_file.csv";
-    private XlsxToCsvConverter xlsxToCsvConverter = new XlsxToCsvConverter();
+    private XlsxToCsvConverter xlsxToCsvConverter = new XlsxToCsvConverter.Builder().build();
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
-    public void testTranslateFile() {
-        testFileTranslation("bulk_import_test_1.xlsx", "bulk_import_expected_test_1.csv");
+    public void testTranslateFile() throws Exception {
+        translateFile("bulk_import_test_1.xlsx", "bulk_import_expected_test_1.csv");
     }
 
     @Test
-    public void testTranslateEmptyFile() {
-        testFileTranslation("bulk_import_test_2_empty.xlsx", "bulk_import_expected_test_2_empty.csv");
+    public void testTranslateEmptyFile() throws Exception {
+        expectedException.expect(IOException.class);
+        translateFile("bulk_import_test_2_empty.xlsx", "bulk_import_expected_test_2_empty.csv");
     }
 
-    private void testFileTranslation(String fileNameToTranslate, String expectedFileName) {
+    @Test
+    public void testTranslateFileWithHiddenSheets() throws Exception {
+        translateFile("bulk_import_test_3_with_hidden_sheets.xlsx", "bulk_import_expected_test_1.csv");
+    }
+
+    private void translateFile(String fileNameToTranslate, String expectedFileName) throws Exception{
         File expectedFile = new File(EXPECTED_CSV_FILE);
         expectedFile.deleteOnExit();
         File actualTranslatedFile = new File(ACTUAL_TRANSLATED_FILE);
@@ -48,7 +59,7 @@ public class XlsxToCsvConverterTest {
             FileUtils.copyInputStreamToFile(ClassLoader.getSystemResourceAsStream(expectedFileName), expectedFile);
             compareCSVFiles(actualTranslatedFile.getPath(), expectedFile.getPath());
         } catch (Exception e) {
-            fail("I/O exception - couldn't handle streams and files");
+            throw new IOException("I/O exception - couldn't handle streams and files");
         }
     }
 
