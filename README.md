@@ -22,6 +22,24 @@ An xlsx file that looks like this:
 
 Would translate to a same looking csv file, including the special characters and the dates.
 
+Code usage example
+=========
+First you should create an output stream (here I first created a file and an output stream on top).
+
+Then you should create an input stream with the xlsx file that will be translated, for example with ClassLoader method
+getSystemResourceAsStream() with the file name a sa parameter. 
+
+Afterwards, you send both the source
+input stream and the dest output stream to convert:
+
+    File destinationFile = new File(DEST_FILE_NAME); //destination file
+    FileOutputStream outputStream = new FileOutputStream(actualTranslatedFile);
+    InputStream inputStream = ClassLoader.getSystemResourceAsStream(fileNameToTranslate);
+    xlsxToCsvConverter.convert(inputStream, outputStream);
+    
+After convert(), the translated file should be inside the outputStream (or inside the file).
+
+
 Licensing
 =========
 file-format-streaming-converter is licensed under the Apache License, Version 2.0. See
