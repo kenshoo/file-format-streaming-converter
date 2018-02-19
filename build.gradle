@@ -1,6 +1,9 @@
 def BUILD_NUMBER = project.hasProperty('BUILD_NUMBER') ? "$BUILD_NUMBER" : "undef"
 
 apply plugin: 'java-library'
+apply plugin: 'com.bmuschko.nexus'
+
+apply plugin: 'java-library'
 
 repositories {
     mavenLocal()
@@ -8,18 +11,27 @@ repositories {
 }
 
 buildscript {
-   repositories {
-       mavenLocal()
-       mavenCentral()
-   }
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+    }
 }
 
-project.version = "0.1.$BUILD_NUMBER"
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-group = 'com.kenshoo'
+archivesBaseName='xlsx2Csv'
+project.group = 'com.kenshoo.xlsx2Csv'
+project.version = "0.1.$BUILD_NUMBER"
+
+apply from: "publish.gradle"
 
 compileJava {
    options.compilerArgs << '-Werror'
