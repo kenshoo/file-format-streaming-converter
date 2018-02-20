@@ -1,51 +1,47 @@
-uploadArchives {
-    def username = project.hasProperty("ossrhUsername") ? $ossrhUsername : "dummy"
-    def password = project.hasProperty("ossrhPassword") ? $ossrhPassword : "dummy"
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+modifyPom {
+    project {
+        packaging 'jar'
+        name "$project.group:$archivesBaseName"
+        description 'A file format converter from xlsx to csv using streaming.'
+        url 'https://github.com/kenshoo/file-format-streaming-converter'
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
-                authentication(userName: username, password: password)
+        scm {
+            connection 'scm:git:git@github.com:kenshoo/file-format-streaming-converter.git'
+            developerConnection 'scm:git:git@github.com:kenshoo/file-format-streaming-converter.git'
+            url 'git@github.com:kenshoo/file-format-streaming-converter.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
             }
+        }
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
-                authentication(userName: username, password: password)
-            }
-
-            pom.project {
-                packaging 'jar'
-                name "$project.group:$archivesBaseName"
-                description 'A file format converter from xlsx to csv using streaming.'
-                url 'https://github.com/kenshoo/file-format-streaming-converter'
-
-                scm {
-                    connection 'scm:git:git@github.com:kenshoo/file-format-streaming-converter.git'
-                    developerConnection 'scm:git:git@github.com:kenshoo/file-format-streaming-converter.git'
-                    url 'git@github.com:kenshoo/file-format-streaming-converter.git'
-                }
-
-                licenses {
-                    license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 'Shachaf Ashkenazi'
-                        name 'Shachaf Ashkenazi'
-                        email 'shachaf.ashkenazi@kenshoo.com'
-                        url 'https://github.com/shachaf-ashkenazi'
-                        organization = 'Kenshoo' // for some weird reason, organization requires equals in order to put organization to pom, otherwise org.apache.maven.model.Organization.toString() is used
-                        organizationUrl 'http://www.kenshoo.com/'
-                        roles {
-                            role 'Software Engineer'
-                        }
-                    }
+        developers {
+            developer {
+                id 'Shachaf Ashkenazi'
+                name 'Shachaf Ashkenazi'
+                email 'shachaf.ashkenazi@kenshoo.com'
+                url 'https://github.com/shachaf-ashkenazi'
+                organization = 'Kenshoo' // for some weird reason, organization requires equals in order to put organization to pom, otherwise org.apache.maven.model.Organization.toString() is used
+                organizationUrl 'http://www.kenshoo.com/'
+                roles {
+                    role 'Software Engineer'
                 }
             }
         }
     }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
 }
