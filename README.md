@@ -29,6 +29,21 @@ that provides xlsx file type parsing using streams (for big files).
 
 Code usage example
 =========
+Add the jar to your dependenies
+**Apache Maven**
+```xml
+<dependency>
+    <groupId>com.kenshoo</groupId>
+    <artifactId>xlsx2csv</artifactId>
+    <version>0.1.2</version>
+</dependency>
+```
+**Gradle**
+
+`compile 'com.kenshoo:xlsx2csv:0.1.2'`
+
+**Usage**
+
 First you should create an output stream (here I first created a file and an output stream on top).
 
 Then you should create an input stream with the xlsx file that will be translated, for example with ClassLoader method
