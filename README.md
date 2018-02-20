@@ -34,15 +34,26 @@ First you should create an output stream (here I first created a file and an out
 Then you should create an input stream with the xlsx file that will be translated, for example with ClassLoader method
 getSystemResourceAsStream() with the file name a sa parameter. 
 
-Afterwards, you send both the source
-input stream and the dest output stream to convert:
+Afterwards, you send both the source input stream and the dest output stream to convert:
+```java
+import com.kenshoo.xlsx2csv.XlsxToCsvConverter;
+import java.io.*;
 
-    XlsxToCsvConverter xlsxToCsvConverter = new XlsxToCsvConverter.Builder().build(); //building a new converter with default parameters
-    File destinationFile = new File(DEST_FILE_NAME); //destination file
-    FileOutputStream outputStream = new FileOutputStream(actualTranslatedFile);
-    InputStream inputStream = ClassLoader.getSystemResourceAsStream(fileNameToTranslate);
-    xlsxToCsvConverter.convert(inputStream, outputStream);
+public class Converter {
+  private final static String SOURCE_FILE_PATH = "/path/example-input.xslx"
+  private final static String DEST_FILE_NAME = "/path/example-result.csv"
     
+  //building a new converter with default parameters
+  private final XlsxToCsvConverter xlsxToCsvConverter = new XlsxToCsvConverter.Builder().build();
+  
+    public void function convert() {
+      final FileOutputStream outputStream = new FileOutputStream(new File(DEST_FILE_NAME));
+      final InputStream inputStream = new FileInputStream((SOURCE_FILE_PATH);
+                                                          
+      xlsxToCsvConverter.convert(inputStream, outputStream);
+    }
+}
+``` 
 After convert(), the translated file should be inside the outputStream (or inside the file).
 
 Acknowledgements
