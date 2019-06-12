@@ -44,10 +44,6 @@ project.test {
    }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.0'
-}
-
 dependencies {
     api 'org.apache.commons:commons-csv:1.2'
     api 'commons-io:commons-io:2.4'
