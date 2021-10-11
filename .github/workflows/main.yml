@@ -23,7 +23,7 @@ jobs:
         fetch-depth: 0 # This is a required field for CodeGuru
 
     - name: Configure AWS credentials from Test account
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v1.5.11
       with:
         aws-access-key-id: ${{ secrets.code_guru_env.CLIENT_ID }}
         aws-secret-access-key: ${{ secrets.code_guru_env.CLIENT_SECRET }}
