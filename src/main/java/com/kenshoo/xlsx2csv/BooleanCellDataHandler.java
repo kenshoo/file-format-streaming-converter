@@ -14,6 +14,21 @@ class BooleanCellDataHandler implements CellDataHandler {
     public boolean isMatchingCellType(StreamingCell cell) {
         return cell.getCellType() == Cell.CELL_TYPE_BOOLEAN;
     }
+    
+    //duplicate?
+    public boolean isMatchingCellType2(StreamingCell cell) {
+        return cell.getCellType() == Cell.CELL_TYPE_BOOLEAN;
+    }
+    
+    //bad naming?
+    private void badnaming() {
+        //bad naming?
+        java.util.ArrayList BadNamingList;
+        //null?
+        System.out.println(BadNamingList.size());
+    }
+
+
 
     @Override
     public String handleCell(StreamingCell cell) {
