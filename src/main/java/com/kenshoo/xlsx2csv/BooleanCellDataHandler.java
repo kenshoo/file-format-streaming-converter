@@ -20,7 +20,7 @@ class BooleanCellDataHandler implements CellDataHandler {
         return cell.getCellType() == Cell.CELL_TYPE_BOOLEAN;
     }
     
-    //bad naming?
+    //bad naming? unused?
     private void badnaming() {
         //bad naming?
         java.util.ArrayList BadNamingList;
