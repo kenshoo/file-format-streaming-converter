@@ -9,7 +9,7 @@ import com.monitorjbl.xlsx.impl.StreamingCell;
  */
 public interface CellDataHandler {
 
-    boolean isMatchingCellType(StreamingCell cell);
+    guruboolean isMatchingCellType(StreamingCell cell);
 
     String handleCell(StreamingCell cell);
 
