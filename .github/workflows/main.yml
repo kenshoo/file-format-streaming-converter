@@ -1,0 +1,42 @@
+name: Code Guru test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+  code-review:
+    name: Upload to Amazon S3
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # This is a required field for CodeGuru
+
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v1.5.11
+      with:
+        aws-access-key-id: ${{ secrets.CLIENT_ID }}
+        aws-secret-access-key: ${{ secrets.CLIENT_SECRET }}
+        aws-region: us-east-1
+
+    - name: AWS CodeGuru Reviewer Scanner
+      uses: aws-actions/codeguru-reviewer@v1.1
+      with:
+        # build_path: target # build artifact(s) directory
+        s3_bucket: codeguru-reviewer-kenshoo-poc # S3 Bucket with "codeguru-reviewer-*" prefix
+
+    - name: Upload review result
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: codeguru-results.sarif.json # Your results file will be named codeguru-results.sarif.json
